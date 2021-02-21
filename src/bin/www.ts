@@ -5,10 +5,10 @@
  */
 import 'source-map-support/register';
 import app from '../app';
-import dbg from 'debug';
+import debug from 'debug';
 import http from 'http';
 
-const debug = dbg('audio-recorder-api:server');
+debug('http');
 
 /**
  * Normalize a port into a number, string, or false.
