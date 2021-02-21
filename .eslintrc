@@ -5,16 +5,20 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
-    "eslint-config-prettier",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "rules": {
-    "strict": ["error", "never"]
+    "strict": ["error", "never"],
+    "no-var": "error",
+    "prefer-const": "error"
   },
   "env": {
-    "node": true
+    "node": true,
+    "es6": true
   }
 }
