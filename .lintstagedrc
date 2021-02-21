@@ -1,9 +1,9 @@
 {
-  "*.js": [
-    "eslint"
-  ],
-  "*.+(js|json|ts)": [
+  "src/**/*.{ts,js}": [
+    "eslint --fix --max-warnings 0",
     "prettier --write",
-    "git add"
+  ],
+  "src/**/*.json": [
+    "prettier --write"
   ]
 }
