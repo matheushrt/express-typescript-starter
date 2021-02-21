@@ -12,8 +12,8 @@
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
     "validate": "npm-run-all --parallel check-types check-format lint build",
-    "nodemon": "nodemon ./dist/bin/www.js",
-    "dev": "npm-run-all --parallel build:dev nodemon"
+    "serve:dev": "nodemon ./dist/bin/www.js",
+    "dev": "npm-run-all --parallel build:dev serve:dev"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
