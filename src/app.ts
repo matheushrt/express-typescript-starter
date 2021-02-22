@@ -5,12 +5,15 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 
+import { expressLogger } from './config/logger';
+
 import { home } from './routes';
 
 const app = express();
 
 app.use(helmet());
 app.use(cors());
+app.use(expressLogger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
