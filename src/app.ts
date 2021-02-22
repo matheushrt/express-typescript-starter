@@ -1,23 +1,31 @@
 import createError from 'http-errors';
 import express from 'express';
-import path from 'path';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
+import { ApolloServer } from 'apollo-server-express';
 
 import { expressLogger } from './config/logger';
+import BlockchainAPI from './graphql/restDataSource';
+import typeDefs from './graphql/schema';
+import resolvers from './graphql/resolver';
 
 import { home } from './routes';
 
 const app = express();
 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => {
+    return {
+      blockchainAPI: new BlockchainAPI(),
+    };
+  },
+});
+
+server.applyMiddleware({ app });
+
 app.use(helmet());
-app.use(cors());
 app.use(expressLogger);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
 
