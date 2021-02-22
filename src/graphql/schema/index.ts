@@ -7,12 +7,12 @@ const typeDefs = gql`
     height: Int!
     size: Int!
     block_index: Int!
-    prev_block: Int!
+    prev_block: String!
     tx: [transaction]
   }
 
   type transaction {
-    hash: Int!
+    hash: String!
     size: Int!
     fee: Int!
     balance: Int!
